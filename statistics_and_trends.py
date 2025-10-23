@@ -74,7 +74,6 @@ def writing(moments, col):
           f'Standard Deviation = {moments[1]:.2f}, '
           f'Skewness = {moments[2]:.2f}, and '
           f'Excess Kurtosis = {moments[3]:.2f}.')
-
     skew_type = "right skewed" if moments[2] > 0 else "left skewed" if moments[2] < 0 else "not skewed"
     if moments[3] > 0:
         kurtosis_type = "leptokurtic"
@@ -96,5 +95,7 @@ def main():
     moments = statistical_analysis(df, col)
     writing(moments, col)
     return
+
+
 if __name__ == '__main__':
     main()
