@@ -40,7 +40,10 @@ def plot_statistical_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
     corr = df.corr(numeric_only=True)
     sns.heatmap(corr, annot=True, cmap='coolwarm', fmt='.2f', ax=ax)
-    ax.set_title('Correlation Heatmap for Numeric BMW Attributes')
+    ax.set_title(
+    'Correlation Heatmap for Numeric BMW Attributes and '
+    'Their Statistical Relationships'
+)
     plt.tight_layout()
     plt.show()
     plt.close()
