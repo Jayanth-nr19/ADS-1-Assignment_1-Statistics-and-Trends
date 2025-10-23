@@ -7,12 +7,11 @@ You should NOT change any function, file or variable names,
 Make use of the functions presented in the lectures
 and ensure your code is PEP-8 compliant, including docstrings.
 """
-from corner import corner
 import matplotlib.pyplot as plt
-import numpy as np
 import pandas as pd
 import scipy.stats as ss
 import seaborn as sns
+
 
 def plot_relational_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
@@ -23,6 +22,7 @@ def plot_relational_plot(df):
     plt.close()
     return
  
+
 def plot_categorical_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
     top_models = df['model'].value_counts().head(10)
@@ -35,6 +35,7 @@ def plot_categorical_plot(df):
     plt.close()
     return
 
+
 def plot_statistical_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
     corr = df.corr(numeric_only=True)
@@ -45,12 +46,14 @@ def plot_statistical_plot(df):
     plt.close()
     return
 
+
 def statistical_analysis(df, col: str):
     mean = df[col].mean()
     stddev = df[col].std()
     skew = ss.skew(df[col].dropna())
     excess_kurtosis = ss.kurtosis(df[col].dropna())
     return mean, stddev, skew, excess_kurtosis
+
 
 def preprocessing(df):
     print("Initial Data Overview:")
@@ -63,6 +66,7 @@ def preprocessing(df):
     print("\nCorrelation Matrix:")
     print(df.corr(numeric_only=True))
     return df
+
 
 def writing(moments, col):
     print(f'For the attribute {col}:')
@@ -80,6 +84,7 @@ def writing(moments, col):
         kurtosis_type = "mesokurtic"
     print(f"The data was {skew_type} and {kurtosis_type}.")
     return
+
 
 def main():
     df = pd.read_csv('bmw.csv')
