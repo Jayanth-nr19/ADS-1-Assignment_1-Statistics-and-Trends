@@ -14,7 +14,6 @@ import pandas as pd
 import scipy.stats as ss
 import seaborn as sns
 
-
 def plot_relational_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
     sns.scatterplot(data=df, x='year', y='price', ax=ax)
@@ -23,8 +22,7 @@ def plot_relational_plot(df):
     plt.show()
     plt.close()
     return
-
-
+ 
 def plot_categorical_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
     top_models = df['model'].value_counts().head(10)
@@ -37,7 +35,6 @@ def plot_categorical_plot(df):
     plt.close()
     return
 
-
 def plot_statistical_plot(df):
     fig, ax = plt.subplots(figsize=(8, 6))
     corr = df.corr(numeric_only=True)
@@ -48,15 +45,12 @@ def plot_statistical_plot(df):
     plt.close()
     return
 
-
-
 def statistical_analysis(df, col: str):
     mean = df[col].mean()
     stddev = df[col].std()
     skew = ss.skew(df[col].dropna())
     excess_kurtosis = ss.kurtosis(df[col].dropna())
     return mean, stddev, skew, excess_kurtosis
-
 
 def preprocessing(df):
     print("Initial Data Overview:")
@@ -87,8 +81,6 @@ def writing(moments, col):
     print(f"The data was {skew_type} and {kurtosis_type}.")
     return
 
-
-
 def main():
     df = pd.read_csv('bmw.csv')
     df = preprocessing(df)
@@ -99,6 +91,5 @@ def main():
     moments = statistical_analysis(df, col)
     writing(moments, col)
     return
-
 if __name__ == '__main__':
     main()
