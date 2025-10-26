@@ -25,7 +25,6 @@ def plot_relational_plot(df):
 
 
 def plot_categorical_plot(df):
-    """Plot the top 10 BMW models by count."""
     fig, ax = plt.subplots(figsize=(8, 6))
     top_models = df["model"].value_counts().head(10)
     sns.barplot(x=top_models.values, y=top_models.index, ax=ax)
@@ -39,7 +38,6 @@ def plot_categorical_plot(df):
 
 
 def plot_statistical_plot(df):
-    """Plot a correlation heatmap of numeric attributes."""
     fig, ax = plt.subplots(figsize=(8, 6))
     corr = df.corr(numeric_only=True)
     sns.heatmap(corr, annot=True, cmap="coolwarm", fmt=".2f", ax=ax)
@@ -54,7 +52,6 @@ def plot_statistical_plot(df):
 
 
 def statistical_analysis(df, col: str):
-    """Compute mean, std, skewness, and kurtosis for a given column."""
     mean = df[col].mean()
     stddev = df[col].std()
     skew = ss.skew(df[col].dropna())
@@ -63,7 +60,6 @@ def statistical_analysis(df, col: str):
 
 
 def preprocessing(df):
-    """Display initial data insights and drop missing price values."""
     print("Initial Data Overview:")
     print(df.head())
     print("\nSummary Statistics:")
@@ -77,7 +73,6 @@ def preprocessing(df):
 
 
 def writing(moments, col):
-    """Print detailed statistical analysis results."""
     print(f"For the attribute {col}:")
     print(
         f"Mean = {moments[0]:.2f}, "
@@ -103,7 +98,6 @@ def writing(moments, col):
 
 
 def main():
-    """Main function to run the data analysis."""
     df = pd.read_csv("bmw.csv")
     df = preprocessing(df)
     col = "price"
